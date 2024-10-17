@@ -1,0 +1,24 @@
+﻿@model Prog2bPOEPart2.Models.Document
+@{
+    ViewData["Title"] = "Create Document";
+}
+
+<h2>Create Document</h2>
+<p>Please make sure that the document is either a pdf or a w</p>
+
+<form asp-action="Create" enctype="multipart/form-data">
+    <div class="form-group">
+        <label asp-for="ClaimId" class="control-label">Claim</label>
+        <select asp-for="ClaimId" class="form-control" asp-items="ViewBag.ClaimId"></select>
+    </div>
+
+    <div class="form-group">
+        <label for="file">Upload Document</label>
+        <input type="file" class="form-control" name="file" />
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Create" class="btn btn-primary" />
+        <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+    </div>
+</form>

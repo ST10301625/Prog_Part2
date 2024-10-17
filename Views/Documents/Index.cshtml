@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Prog2bPOEPart2.Models.Document>
+@{
+    ViewData["Title"] = "Documents List";
+}
+
+<h2>Documents List</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New Document</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>File Name</th>
+            <th>File Type</th>
+            <th>File Path</th>
+            <th>File Size</th>
+            <th>Uploaded Date</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.FileName</td>
+            <td>@item.FileType</td>
+            <td>@item.FilePath</td>
+            <td>@item.FileSize</td>
+            <td>@item.UploadedDate</td>
+            <td>
+                <a asp-action="Details" asp-route-id="@item.DocumentId" class="btn btn-info">Details</a> |
+                <a asp-action="Edit" asp-route-id="@item.DocumentId" class="btn btn-primary">Edit</a> |
+                <a asp-action="Delete" asp-route-id="@item.DocumentId" class="btn btn-danger">Delete</a> |
+                <a asp-action="Download" asp-route-id="@item.DocumentId" class="btn btn-success">Download</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+<a asp-action="Index" class="btn btn-secondary">Back to List</a>
