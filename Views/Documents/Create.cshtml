@@ -1,24 +1,30 @@
 ﻿@model Prog2bPOEPart2.Models.Document
+
 @{
     ViewData["Title"] = "Create Document";
 }
 
-<h2>Create Document</h2>
-<p>Please make sure that the document is either a pdf or a w</p>
+<h1 class="text-center mb-4">Create Document</h1>
 
-<form asp-action="Create" enctype="multipart/form-data">
-    <div class="form-group">
-        <label asp-for="ClaimId" class="control-label">Claim</label>
-        <select asp-for="ClaimId" class="form-control" asp-items="ViewBag.ClaimId"></select>
-    </div>
+<p class="text-muted text-center">Please upload a PDF or Word document for the selected claim.</p>
 
-    <div class="form-group">
-        <label for="file">Upload Document</label>
-        <input type="file" class="form-control" name="file" />
-    </div>
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div class="form-group mb-4">
+                <label asp-for="ClaimId" class="form-label">Claim</label>
+                <select asp-for="ClaimId" class="form-control shadow-sm" asp-items="ViewBag.ClaimId"></select>
+            </div>
 
-    <div class="form-group">
-        <input type="submit" value="Create" class="btn btn-primary" />
-        <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+            <div class="form-group mb-4">
+                <label for="file" class="form-label">Upload Document</label>
+                <input type="file" class="form-control shadow-sm" name="file" accept=".pdf, .doc, .docx" />
+            </div>
+
+            <div class="form-group text-center">
+                <input type="submit" value="Create" class="btn btn-success btn-lg px-5 me-2" />
+                <a asp-action="Index" class="btn btn-secondary btn-lg px-5">Back to List</a>
+            </div>
+        </form>
     </div>
-</form>
+</div>

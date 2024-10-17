@@ -4,62 +4,64 @@
     ViewData["Title"] = "Create Claim";
 }
 
-<h1>Create Claim</h1>
+<h1 class="text-center mb-4">Create Claim</h1>
 
-<h4>Claim</h4>
+<h4 class="text-muted">Claim Details</h4>
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+            <div class="form-group mb-4">
+                <label asp-for="Name" class="form-label"></label>
+                <input asp-for="Name" class="form-control shadow-sm" placeholder="Enter your name" />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
 
-            <div class="form-group">
-                <label asp-for="DateSubmitted" class="control-label"></label>
-                <input asp-for="DateSubmitted" class="form-control" />
+            <div class="form-group mb-4">
+                <label asp-for="DateSubmitted" class="form-label"></label>
+                <input asp-for="DateSubmitted" class="form-control shadow-sm" placeholder="Select date" />
                 <span asp-validation-for="DateSubmitted" class="text-danger"></span>
             </div>
 
-            <div class="form-group">
-                <label asp-for="HoursWorked" class="control-label"></label>
-                <input asp-for="HoursWorked" class="form-control" />
+            <div class="form-group mb-4">
+                <label asp-for="HoursWorked" class="form-label"></label>
+                <input asp-for="HoursWorked" class="form-control shadow-sm" placeholder="Enter hours worked" />
                 <span asp-validation-for="HoursWorked" class="text-danger"></span>
             </div>
 
-            <div class="form-group">
-                <label asp-for="HourlyRate" class="control-label"></label>
-                <input asp-for="HourlyRate" class="form-control" />
+            <div class="form-group mb-4">
+                <label asp-for="HourlyRate" class="form-label"></label>
+                <input asp-for="HourlyRate" class="form-control shadow-sm" placeholder="Enter hourly rate" />
                 <span asp-validation-for="HourlyRate" class="text-danger"></span>
             </div>
 
-            <div class="form-group">
-                <label asp-for="ExtraNotes" class="control-label"></label>
-                <input asp-for="ExtraNotes" class="form-control" />
+            <div class="form-group mb-4">
+                <label asp-for="ExtraNotes" class="form-label"></label>
+                <textarea asp-for="ExtraNotes" class="form-control shadow-sm" rows="3" placeholder="Add extra notes (optional)"></textarea>
                 <span asp-validation-for="ExtraNotes" class="text-danger"></span>
             </div>
 
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+            <div class="form-group text-center">
+                <input type="submit" value="Create Claim" class="btn btn-primary btn-lg px-5" />
             </div>
         </form>
     </div>
 </div>
 
-<div class="mt-4">
+<div class="mt-5 text-center">
     <p>If you want to upload documents for this claim, please press the button below.</p>
-    <a asp-action="Create" asp-controller="Documents" class="btn btn-secondary">Upload Documents</a>
+    <a asp-action="Create" asp-controller="Documents" class="btn btn-secondary btn-lg">Upload Documents</a>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
+<div class="text-center mt-3">
+    <a asp-action="Index" class="btn btn-link">Back to List</a>
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
-

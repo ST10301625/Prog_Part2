@@ -1,59 +1,68 @@
 ﻿@model Prog2bPOEPart2.Models.Document
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Edit Document";
 }
 
-<h1>Edit</h1>
+<h1 class="text-center mb-4">@ViewData["Title"]</h1>
 
-<h4>Document</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="DocumentId" />
-            <div class="form-group">
-                <label asp-for="FileName" class="control-label"></label>
-                <input asp-for="FileName" class="form-control" />
-                <span asp-validation-for="FileName" class="text-danger"></span>
+<div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+        <div class="card shadow-sm border-0">
+            <div class="card-body p-4">
+                <form asp-action="Edit">
+                    <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+                    <input type="hidden" asp-for="DocumentId" />
+
+                    <div class="form-group mb-3">
+                        <label asp-for="FileName" class="form-label fw-bold">File Name</label>
+                        <input asp-for="FileName" class="form-control shadow-sm" placeholder="Enter file name" />
+                        <span asp-validation-for="FileName" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label asp-for="FileType" class="form-label fw-bold">File Type</label>
+                        <input asp-for="FileType" class="form-control shadow-sm" placeholder="Enter file type" />
+                        <span asp-validation-for="FileType" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label asp-for="FilePath" class="form-label fw-bold">File Path</label>
+                        <input asp-for="FilePath" class="form-control shadow-sm" placeholder="Enter file path" />
+                        <span asp-validation-for="FilePath" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label asp-for="FileSize" class="form-label fw-bold">File Size (KB)</label>
+                        <input asp-for="FileSize" class="form-control shadow-sm" placeholder="Enter file size" />
+                        <span asp-validation-for="FileSize" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label asp-for="UploadedDate" class="form-label fw-bold">Uploaded Date</label>
+                        <input asp-for="UploadedDate" class="form-control shadow-sm" placeholder="YYYY-MM-DD" />
+                        <span asp-validation-for="UploadedDate" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group mb-4">
+                        <label asp-for="ClaimId" class="form-label fw-bold">Claim</label>
+                        <select asp-for="ClaimId" class="form-control shadow-sm" asp-items="ViewBag.ClaimId"></select>
+                        <span asp-validation-for="ClaimId" class="text-danger"></span>
+                    </div>
+
+                    <div class="d-flex justify-content-center">
+                        <input type="submit" value="Save" class="btn btn-success btn-lg px-4 me-3" />
+                        <a asp-action="Index" class="btn btn-secondary btn-lg px-4">Back to List</a>
+                    </div>
+                </form>
             </div>
-            <div class="form-group">
-                <label asp-for="FileType" class="control-label"></label>
-                <input asp-for="FileType" class="form-control" />
-                <span asp-validation-for="FileType" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="FilePath" class="control-label"></label>
-                <input asp-for="FilePath" class="form-control" />
-                <span asp-validation-for="FilePath" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="FileSize" class="control-label"></label>
-                <input asp-for="FileSize" class="form-control" />
-                <span asp-validation-for="FileSize" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="UploadedDate" class="control-label"></label>
-                <input asp-for="UploadedDate" class="form-control" />
-                <span asp-validation-for="UploadedDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ClaimId" class="control-label"></label>
-                <select asp-for="ClaimId" class="form-control" asp-items="ViewBag.ClaimId"></select>
-                <span asp-validation-for="ClaimId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
+        </div>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

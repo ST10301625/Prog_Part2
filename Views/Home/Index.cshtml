@@ -3,6 +3,47 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4 fw-bold">Welcome to the Lecture Claims App!</h1>
+    <p class="lead mt-3">Where lecturers submit claims, and managers become the claim superheroes! 🦸‍♂️</p>
+
+    <div class="mt-5">
+        <h2>What Can You Do Here?</h2>
+        <div class="row justify-content-center">
+            <div class="col-md-4">
+                <div class="card mb-3 shadow border-0" style="background-color: #f0f8ff; border-radius: 15px;">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Create Claims</h5>
+                        <p class="card-text">Need to claim for that extra hour spent explaining the complexities of quantum physics? Click below!</p>
+                        <a href="@Url.Action("Create", "Claims")" class="btn btn-primary">Create a Claim</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card mb-3 shadow border-0" style="background-color: #f0f8ff; border-radius: 15px;">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Documents View</h5>
+                        <p class="card-text">Check out your claims and the associated paperwork! (Yes, there will be paperwork!)</p>
+                        <a href="@Url.Action("Index", "Documents")" class="btn btn-secondary">View Documents</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card mb-3 shadow border-0" style="background-color: #f0f8ff; border-radius: 15px;">
+                    <div class="card-body text-center">
+
+
+                        <h5 class="card-title">Tracking Status</h5>
+                        <p class="card-text">Wondering if your claim has been accepted or rejected? Spoiler: It might not be a plot twist!</p>
+                        <a href="@Url.Action("Index", "Claims")" class="btn btn-success">Track Your Status</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <p>If you have questions, just ask. If your claim gets rejected, remember, it's not personal; it's just the budget talking! 💸</p>
+    </div>
 </div>

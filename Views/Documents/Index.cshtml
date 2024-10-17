@@ -1,43 +1,56 @@
 ﻿@model IEnumerable<Prog2bPOEPart2.Models.Document>
+
 @{
     ViewData["Title"] = "Documents List";
 }
 
-<h2>Documents List</h2>
+<div class="container mt-4">
+    <h2 class="text-center mb-4">@ViewData["Title"]</h2>
 
-<p>
-    <a asp-action="Create" class="btn btn-primary">Create New Document</a>
-</p>
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <p class="mb-0">Manage your documents below or add a new one.</p>
+        <a asp-action="Create" class="btn btn-success btn-lg">Create New Document</a>
+    </div>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>File Name</th>
-            <th>File Type</th>
-            <th>File Path</th>
-            <th>File Size</th>
-            <th>Uploaded Date</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>@item.FileName</td>
-            <td>@item.FileType</td>
-            <td>@item.FilePath</td>
-            <td>@item.FileSize</td>
-            <td>@item.UploadedDate</td>
-            <td>
-                <a asp-action="Details" asp-route-id="@item.DocumentId" class="btn btn-info">Details</a> |
-                <a asp-action="Edit" asp-route-id="@item.DocumentId" class="btn btn-primary">Edit</a> |
-                <a asp-action="Delete" asp-route-id="@item.DocumentId" class="btn btn-danger">Delete</a> |
-                <a asp-action="Download" asp-route-id="@item.DocumentId" class="btn btn-success">Download</a>
-            </td>
-        </tr>
-    }
-    </tbody>
-</table>
+    <table class="table table-striped table-hover shadow-sm">
+        <thead class="table-dark">
+            <tr>
+                <th>File Name</th>
+                <th>File Type</th>
+                <th>File Path</th>
+                <th>File Size (KB)</th>
+                <th>Uploaded Date</th>
+                <th class="text-center">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.FileName</td>
+                    <td>@item.FileType</td>
+                    <td>
+                        <span title="@item.FilePath">
+                            @{
+                                string shortenedPath = item.FilePath.Length > 30 ? item.FilePath.Substring(0, 30) + "..." : item.FilePath;
+                            }
+                            @shortenedPath
+                        </span>
+                    </td>
+                    <td>@item.FileSize</td>
+                    <td>@item.UploadedDate.ToString("yyyy-MM-dd")</td>
+                    <td class="text-center">
+                        <a asp-action="Details" asp-route-id="@item.DocumentId" class="btn btn-info btn-sm">Details</a>
+                        <a asp-action="Edit" asp-route-id="@item.DocumentId" class="btn btn-primary btn-sm">Edit</a>
+                        <a asp-action="Delete" asp-route-id="@item.DocumentId" class="btn btn-danger btn-sm">Delete</a>
+                        <a asp-action="Download" asp-route-id="@item.DocumentId" class="btn btn-success btn-sm">Download</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 
-<a asp-action="Index" class="btn btn-secondary">Back to List</a>
+    <div class="d-flex justify-content-end mt-3">
+        <a asp-action="Index" class="btn btn-secondary btn-lg">Back to Home</a>
+    </div>
+</div>
